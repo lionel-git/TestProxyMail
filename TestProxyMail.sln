@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTester", "ClientTeste
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyConsole", "ProxyConsole\ProxyConsole.csproj", "{C4437DC1-6D23-4E06-8E1D-161463BAD6D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNPOI", "TestNPOI\TestNPOI.csproj", "{2EA96108-ADC1-4E46-A9E1-0914A4D0EAB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{C4437DC1-6D23-4E06-8E1D-161463BAD6D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4437DC1-6D23-4E06-8E1D-161463BAD6D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4437DC1-6D23-4E06-8E1D-161463BAD6D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EA96108-ADC1-4E46-A9E1-0914A4D0EAB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA96108-ADC1-4E46-A9E1-0914A4D0EAB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA96108-ADC1-4E46-A9E1-0914A4D0EAB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA96108-ADC1-4E46-A9E1-0914A4D0EAB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

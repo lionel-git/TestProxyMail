@@ -13,7 +13,7 @@ namespace ProxyConsole
                 var config = BaseConfig.LoadAll<ProxyConfig>("proxyConfig.json", args);
                 if (config.Help)
                     return;
-                Console.WriteLine($"Config:\n{config}");
+                Console.WriteLine($"Config:\n{config.ToStringFlat()}");
                 var proxy = new Proxy(7777, "localhost", 4555);
                 Console.ReadKey();
             }
