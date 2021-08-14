@@ -11,19 +11,22 @@ namespace GenericProxy
         {
             var server = new TcpListener(IPAddress.Any, localPort);
             server.Start();
-            try
+            Task.Run(() =>
             {
-                while (true)
+                try
                 {
-                    var receiver = server.AcceptTcpClient();
-                    var sender = new TcpClient(remoteHost, remotePort);
-                    var t = Task.Run(() => RunTask(receiver, sender));
+                    while (true)
+                    {
+                        var receiver = server.AcceptTcpClient();
+                        var sender = new TcpClient(remoteHost, remotePort);
+                        var t = Task.Run(() => RunTask(receiver, sender));
+                    }
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            });
         }
 
         private void RunTask(TcpClient receiver, TcpClient sender)
