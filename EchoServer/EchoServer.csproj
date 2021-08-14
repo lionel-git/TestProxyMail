@@ -5,9 +5,4 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\GenericProxy\GenericProxy.csproj" />
-    <ProjectReference Include="..\Mailer\Mailer.csproj" />
-  </ItemGroup>
-
 </Project>
