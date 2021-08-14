@@ -22,6 +22,7 @@ namespace ClientTester
                     Console.WriteLine(Encoding.ASCII.GetString(buffer, 0, length));
                     Console.WriteLine("====");
                 }
+                client.Close();
             }
             catch (Exception ex)
             {

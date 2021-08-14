@@ -46,7 +46,8 @@ namespace EchoServer
                 do
                 {
                     length = receiverStream.Read(buffer, 2, buffer.Length-2);
-                    receiverStream.Write(buffer, 0, length+2);
+                    if (length>0)
+                        receiverStream.Write(buffer, 0, length+2);
                     Console.WriteLine($"Exchanged length = {length}");
                 }
                 while (length > 0);
@@ -55,6 +56,12 @@ namespace EchoServer
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+            finally
+            {
+                receiver.Client.Shutdown(SocketShutdown.Both);
+                receiver.Close();
+                receiver.Dispose();
             }
         }
     }
