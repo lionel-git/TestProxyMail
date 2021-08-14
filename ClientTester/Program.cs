@@ -10,12 +10,13 @@ namespace ClientTester
         {
             try
             {
+                int port = 7777; // proxy
                 using var client = new TcpClient();
-                client.Connect("localhost", 4555);
-                var msg = "Hello world";
+                client.Connect("localhost", port);
+                var msg = "Hello world ABCDEFGHIJKLMOPQRSTUVWXYZ";
                 for (int i = 0; i < 10; i++)
                 {
-                    client.GetStream().Write(Encoding.ASCII.GetBytes(msg));
+                    client.GetStream().Write(Encoding.ASCII.GetBytes(msg, 0,i+10));
                     var buffer = new byte[1024 * 1024];
                     int length = client.GetStream().Read(buffer, 0, buffer.Length);
                     Console.WriteLine(Encoding.ASCII.GetString(buffer, 0, length));

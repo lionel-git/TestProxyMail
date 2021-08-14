@@ -40,11 +40,13 @@ namespace EchoServer
                 Console.WriteLine($"Connection opened: {remoteEndPoint}");
                 var receiverStream = receiver.GetStream();
                 var buffer = new byte[1024*1024];
+                buffer[0] = (byte)'E';
+                buffer[1] = (byte)':';
                 int length;
                 do
                 {
-                    length = receiverStream.Read(buffer, 0, buffer.Length);
-                    receiverStream.Write(buffer, 0, length);
+                    length = receiverStream.Read(buffer, 2, buffer.Length-2);
+                    receiverStream.Write(buffer, 0, length+2);
                     Console.WriteLine($"Exchanged length = {length}");
                 }
                 while (length > 0);
