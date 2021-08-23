@@ -19,7 +19,16 @@ namespace TestNPOI
                 var xlsx = new MyXlsxTest();
                 var fileName = $@"c:\tmp\MyXlsxTest.{Process.GetCurrentProcess().Id}.xlsx";
                 xlsx.Save(fileName);
-                Process.Start(@"C:\Program Files (x86)\Microsoft Office\root\Office16\EXCEL.EXE", fileName);
+                //Process.Start(fileName);
+                //Process.Start(@"C:\Program Files (x86)\Microsoft Office\root\Office16\EXCEL.EXE", fileName);
+
+                new Process
+                {
+                    StartInfo = new ProcessStartInfo(fileName)
+                    {
+                        UseShellExecute = true
+                    }
+                }.Start();
             }
             catch (Exception e) 
             { 

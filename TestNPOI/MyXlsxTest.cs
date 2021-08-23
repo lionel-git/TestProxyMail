@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NPOI.SS.UserModel;
 
 namespace TestNPOI
 {
@@ -23,7 +24,14 @@ namespace TestNPOI
             var sheet2 = wb.CreateSheet("Error1");
             var sheet3 = wb.CreateSheet("Error2");
 
-            var rnd= new Random();
+           
+
+            var doubleCellStyle = wb.CreateCellStyle();
+            doubleCellStyle.DataFormat = wb.CreateDataFormat().GetFormat("#,##0.00");
+
+
+
+            var rnd = new Random();
             var header = sheet.CreateRow(0);
             header.CreateCell(0).SetCellValue("Name");
             header.CreateCell(1).SetCellValue("Value");
@@ -32,12 +40,17 @@ namespace TestNPOI
             {
                 var row = sheet.CreateRow(i+1);
                 row.CreateCell(0).SetCellValue($"Toto_{i}");
-                row.CreateCell(1).SetCellValue(50000.0*rnd.NextDouble());
+                var cell = row.CreateCell(1);
+                cell.SetCellType(CellType.Numeric);
+                cell.CellStyle = doubleCellStyle;
+                cell.SetCellValue(50000.0*rnd.NextDouble()-25000);
             }
+
+            sheet.SetAutoFilter(new CellRangeAddress(0, 0, 0, 1));
+
             for (int i = 0; i < 10; i++)
                 sheet.AutoSizeColumn(i);
 
-            sheet.SetAutoFilter(new CellRangeAddress(0, 0, 0, 1));
 
             // Sheet2
             var header2 = sheet2.CreateRow(0);
