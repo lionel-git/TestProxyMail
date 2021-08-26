@@ -10,8 +10,9 @@ namespace TestProxyMail
         {
             try
             {
+                Console.WriteLine("Test send mail");
                 using var mailer = new MailSender("smtp.free.fr");
-                mailer.Send("lionel.desorme@free.fr", "toto", "Blah Blah", @"c:\tmp\db.json", @"c:\tmp\db2.json");
+                mailer.Send("lionel.desorme@free.fr", "toto", "Blah Blah\nBlihlbih", @"c:\tmp\db.json", @"c:\tmp\db2.json");
             }
             catch (Exception e)
             {
@@ -33,7 +34,7 @@ namespace TestProxyMail
         }
         static void Main(string[] args)
         {
-          
+            TestMail();
         }
     }
 }
